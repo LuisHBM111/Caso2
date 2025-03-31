@@ -12,7 +12,6 @@ public class CalculadorDatos {
 	public List<String> referencias; // cada línea = "Celda,VP,Offset,Accion"
 	private List<Integer> framesEnMemoria; // páginas cargadas (simple)
 	private int numFrames;
-	private int pageSize;
 
 	// Contadores
 	public long hits = 0;
@@ -31,9 +30,6 @@ public class CalculadorDatos {
 		BufferedReader br = new BufferedReader(new FileReader(refFile));
 		// 1) Leer la primera línea: TP=<pageSize>
 		String line = br.readLine();
-		if (line != null) {
-			pageSize = Integer.parseInt(line.split("=")[1].trim());
-		}
 		// 2) Omitir las siguientes 4 líneas (NF, NC, NR, NP)
 		for (int i = 0; i < 4; i++) {
 			br.readLine();
@@ -76,11 +72,11 @@ public class CalculadorDatos {
 		long tiempoSoloHits = totalRefs * HIT_TIME_NS;
 		long tiempoSoloMisses = totalRefs * MISS_TIME_NS;
 
-		System.out.println("=== Resultados de la simulación ===");
+		System.out.println("=== Resultados de la simulacion ===");
 		System.out.println("Marcos asignados: " + numFrames);
 		System.out.println("Total referencias: " + totalRefs);
 		System.out.println("Hits: " + hits);
-		System.out.println("Misses: " + misses);
+		System.out.println("Fallas: " + misses);
 		System.out.println("Tiempo total (ns): " + tiempoTotalNS);
 		System.out.println("Tiempo si todas fueran hits (ns): " + tiempoSoloHits);
 		System.out.println("Tiempo si todas fueran misses (ns): " + tiempoSoloMisses);

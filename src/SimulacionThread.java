@@ -19,7 +19,7 @@ public class SimulacionThread extends Thread {
                     continue;
 
                 int pageNumber = Integer.parseInt(parts[1].trim());
-                char action = parts[3].trim().charAt(0);
+                // char action = parts[3].trim().charAt(0);
 
                 // Acceder página
                 boolean hit = calc.accederPagina(pageNumber);
