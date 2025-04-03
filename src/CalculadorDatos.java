@@ -70,7 +70,7 @@ public class CalculadorDatos {
 		System.out.println("Marcos asignados: " + numFrames);
 		System.out.println("Total referencias: " + totalRefs);
 		System.out.println("Hits: " + hits);
-		System.out.println("Fallas: " + fallas);
+		System.out.println("Fallas: " + (fallas+calcularFallas(fallas)));
 		System.out.println("Tiempo total (ns): " + tiempoTotalNS);
 		System.out.println("Tiempo si todas fueran hits (ns): " + tiempoSoloHits);
 		System.out.println("Tiempo si todas fueran fallas (ns): " + tiempoSolofallas);
@@ -91,6 +91,10 @@ public class CalculadorDatos {
 			}
 			return false;
 		}
+	}
+	
+	public long calcularFallas(long fallas) {
+		return Math.round(fallas * 0.10);
 	}
 
 	// Simulamos la "limpieza" de bits de referencia
